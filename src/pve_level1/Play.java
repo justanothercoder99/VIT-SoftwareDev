@@ -1,14 +1,22 @@
 package pve_level1;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class Play {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
+		Properties values = new Properties();
+		FileInputStream ip = new FileInputStream("src//pve_level1//config.properties");
+		values.load(ip);
+		
 		int score = 0;
 		int last_run = 0;
-		int overs = 1;
+		int overs = Integer.parseInt(values.getProperty("match.total.overs"));
 		String shot = "";
 		
 		Probability p = new Probability();

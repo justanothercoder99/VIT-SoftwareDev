@@ -1,7 +1,6 @@
 package pve_level1;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
@@ -38,6 +37,8 @@ public class Play {
 			if(s == null) {
 				System.out.println("Illegal shot! You missed!!");
 				last_run = 0;
+				System.out.println();
+				System.out.println();
 				continue;
 			}
 			last_run = p.calculateRuns(b, s);
@@ -47,6 +48,8 @@ public class Play {
 			else {
 				System.out.println("You hit a "+last_run);
 			}
+			System.out.println();
+			System.out.println();
 			score += last_run;
 		}
 		

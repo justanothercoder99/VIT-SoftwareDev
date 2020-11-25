@@ -1,8 +1,10 @@
 package pve_level1;
 
+import java.io.IOException;
+
 public class DisplayBall {
 	
-	public Balls displayBall(int curr_score, int last_run) {
+	public Balls displayBall(int curr_score, int last_run) throws IOException {
 		
 		BallList bl = new BallList();
 		Balls ball = bl.GetRandomBall();
@@ -15,7 +17,7 @@ public class DisplayBall {
 		System.out.println("------------------------------");
 		
 		System.out.println("Possible Shots:   \n");
-		System.out.println(sl.getShotList(ball.getModifier()));
+		System.out.println(sl.getShotList(ball));
 		
 		System.out.println("------------------------------");
 		System.out.println("Choose a shot");

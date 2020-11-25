@@ -9,12 +9,12 @@ public class BallList {
 	Random rand = new Random();
 	
 	public void populateBalls() {
-		ballList[0] = new Balls("Full toss", 4);
+		ballList[0] = new Balls("Fulltoss", 4);
 		ballList[1] = new Balls("Yorker", 3);
 		ballList[2] = new Balls("Out-swinger", 3);
 		ballList[3] = new Balls("In-Swinger", 2);
 		ballList[4] = new Balls("Bouncer", 4);
-		ballList[5] = new Balls("Slower Ball", 2);
+		ballList[5] = new Balls("SlowerBall", 2);
 	}
 	
 	public Balls GetRandomBall(){

@@ -5,7 +5,7 @@ import java.util.*;
 public class Probability {
 	Random rand = new Random();
 	
-	public double calculateProbability(int ballMod, int shotMod) {
+	public double calculateProbability(double ballMod, double shotMod) {
 		return (((shotMod-ballMod) * 100)/shotMod);
 	}
 	

@@ -29,7 +29,16 @@ public class ShotList {
 		}
 	}
 	
-	public String getShotList(Balls ball) throws IOException {
+	public double getupdatedModifier(Shots shot,boolean trait){
+		double smod = shot.getModifier();
+		if(trait && (shot.name.equals("Straight Drive") ||  shot.name.equals("Square Cut")||shot.name.equals("Hook")))
+			smod = smod*1.2;
+		if(!trait && (shot.name.equals("Defend") ||  shot.name.equals("Run")))
+			smod = smod*1.2;
+		return smod;
+	}
+	
+	public String getShotList(Balls ball,Bowlers b, Batsman b1) throws IOException {
 		String ret = "";
 		Probability p = new Probability();
 		FileInputStream ip = new FileInputStream("src//pve_level1//config.properties");
@@ -40,13 +49,17 @@ public class ShotList {
 			s[i] = getShot(shotsval[i]);
 			
 		}
+		double bmod = 0;
+		double smod = 0;
 		for(int i=0; i<s.length-1; i++) {
+			bmod = new BallList().getupdatedModifier(ball,b.trait);
+			smod = new ShotList().getupdatedModifier(s[i],b1.trait);
 			ret += s[i].getName() +"\t"+ s[i].getRuns() +"\t"+ 
-					p.calculateProbability(ball.getModifier(), s[i].getModifier());
+					(int)p.calculateProbability(bmod, smod);
 			ret += "\n";
 		}
 		ret += s[s.length-1].getName() +"\t"+ s[s.length-1].getRuns() +"\t"+ 
-				p.calculateProbability(ball.getModifier(), s[s.length-1].getModifier());
+				(int)p.calculateProbability(bmod, smod);
 		return ret;
 	}
 	

@@ -26,6 +26,15 @@ public class BallList {
 		}
 	}
 	
+	public double getupdatedModifier(Balls ball,boolean trait){
+		double bmod = ball.getModifier();
+		if(trait && (ball.name.equals("Fulltoss") ||  ball.name.equals("Yorker")||ball.name.equals("In-Swinger")))
+			bmod = bmod*1.2;
+		if(!trait && (ball.name.equals("Bouncer") ||  ball.name.equals("Out-Swinger")))
+			bmod = bmod*1.2;
+		return bmod;
+	}
+	
 	public Balls GetRandomBall(){
 		int max = ballList.length-1;
 		int min = 0;
